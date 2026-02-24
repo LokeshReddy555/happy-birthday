@@ -351,9 +351,18 @@ function sayYes() {
 }
 
 function moveNo(btn) {
+  const page = btn.closest(".page");
+  const pageRect = page.getBoundingClientRect();
+
+  const maxTop = pageRect.height - btn.offsetHeight - 20; // 20px padding
+  const maxLeft = pageRect.width - btn.offsetWidth - 20;
+
+  const top = Math.random() * maxTop;
+  const left = Math.random() * maxLeft;
+
   btn.style.position = "absolute";
-  btn.style.top = Math.random() * 80 + "vh";
-  btn.style.left = Math.random() * 80 + "vw";
+  btn.style.top = top + "px";
+  btn.style.left = left + "px";
 }
 
 function createHeart() {
