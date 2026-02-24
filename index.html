@@ -354,9 +354,11 @@ function moveNo(btn) {
   const page = btn.closest(".page");
   const pageRect = page.getBoundingClientRect();
 
+  // Calculate maximum allowed top/left
   const maxTop = pageRect.height - btn.offsetHeight - 20; // 20px padding
   const maxLeft = pageRect.width - btn.offsetWidth - 20;
 
+  // Generate random top/left within allowed range
   const top = Math.random() * maxTop;
   const left = Math.random() * maxLeft;
 
@@ -365,6 +367,10 @@ function moveNo(btn) {
   btn.style.left = left + "px";
 }
 
+// Add both mouse and touch events
+const noBtn = document.querySelector(".no-btn");
+noBtn.addEventListener("mouseover", () => moveNo(noBtn));
+noBtn.addEventListener("touchstart", () => moveNo(noBtn));
 function createHeart() {
   const heart = document.createElement("div");
   heart.classList.add("heart");
